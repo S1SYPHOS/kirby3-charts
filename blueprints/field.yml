@@ -1,0 +1,24 @@
+type: structure
+fields:
+  title:
+    label:
+      en: Title
+      de: Titel
+    type: text
+    width: 1/2
+
+  share:
+    label:
+      en: share
+      de: Anteil
+    type: number
+    min: 0
+    step: .01
+    width: 1/4
+
+  color:
+    label:
+      en: Color
+      de: Farbe
+    type: text
+    width: 1/4

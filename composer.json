@@ -1,0 +1,46 @@
+{
+    "name": "fundevogel/kirby3-charts",
+    "description": "SVG charts for Kirby v3",
+    "type": "kirby-plugin",
+    "license": "MIT",
+    "version": "1.0.0",
+    "keywords": ["kirby3", "svg", "charts"],
+    "homepage": "https://codeberg.org/fundevogel/kirby3-charts",
+    "authors": [
+        {
+            "name": "Kinder- und Jugendbuchhandlung Fundevogel",
+            "email": "maschinenraum@fundevogel.de",
+            "homepage": "https://fundevogel.de",
+            "role": "Maintainer"
+        },
+        {
+            "name": "Martin Folkers",
+            "email": "hello@twobrain.io",
+            "homepage": "https://twobrain.io",
+            "role": "Developer"
+        }
+    ],
+    "support": {
+        "email": "maschinenraum@fundevogel.de",
+        "forum": "https://forum.getkirby.com",
+        "source": "https://codeberg.org/fundevogel/kirby3-charts",
+        "issues": "https://codeberg.org/fundevogel/kirby3-charts/issues"
+    },
+    "require": {
+        "getkirby/composer-installer": "^1.1",
+        "goat1000/svggraph": "^3.13",
+        "kschu91/largest-remainder-method": "^1.0"
+    },
+    "require-dev": {
+        "friendsofphp/php-cs-fixer": "^2.14",
+        "phpunit/phpunit": "^8.1"
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Fundevogel\\Tests\\": "tests/"
+        }
+    },
+    "config": {
+        "optimize-autoloader": true
+    }
+}
