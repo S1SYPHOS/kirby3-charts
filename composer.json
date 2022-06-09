@@ -3,7 +3,7 @@
     "description": "SVG charts for Kirby v3",
     "type": "kirby-plugin",
     "license": "MIT",
-    "version": "1.0.0",
+    "version": "1.0.1",
     "keywords": ["kirby3", "svg", "charts"],
     "homepage": "https://codeberg.org/fundevogel/kirby3-charts",
     "scripts": {
