@@ -39,43 +39,49 @@ function renderChart(Page $page, array $entries, array $settings = [], ?array $o
     # Render time!
     $content = $chart->render($type, $options);
 
+    # If specified ..
+    if ($settings['inline'] ?? option('fundevogel.charts.inline', false)) {
+        # .. provide SVG as string
+        return $content;
+    }
+
     $file = new File([
         'filename' => sprintf('chart-%s.svg', hash('md5', $content)),
         'parent' => $page,
         'template' => option('fundevogel.charts.template', 'chart'),
     ]);
 
-    $file->update([
-        'entries' => Yaml::encode($chart->data),
-    ]);
+    try {
 
-    $inline = $settings['inline'] ?? option('fundevogel.charts.inline', false);
+        $file->update([
+            'entries' => Yaml::encode($chart->data),
+        ]);
 
-    if ($file->exists()) {
-        if ($inline) {
-            return svg($file);
+        if (!$file->exists()) {
+            $file->write($content);
         }
 
-        return $file;
+    } catch (Exception $e) {
+        throw new Exception(sprintf('Creating chart failed: "%s"', $e));
     }
 
-    if (F::write($file->root(), $content)) {
-        if ($inline) {
-            return svg($file);
-        }
-
-        return $file;
-    }
-
-    throw new Exception('Couldn\'t create chart!');
+    return $file;
 }
 
 
 Kirby::plugin('fundevogel/charts', [
+    /**
+     * Blueprints
+     */
     'blueprints' => [
         'fields/chart' => __DIR__ . '/blueprints/field.yml',
-        'files/chart' => __DIR__ . '/blueprints/file.yml',
+        'files/chart'  => __DIR__ . '/blueprints/file.yml',
     ],
+
+
+    /**
+     * Page methods
+     */
     'pageMethods' => [
         /**
          * Creates chart
@@ -91,6 +97,11 @@ Kirby::plugin('fundevogel/charts', [
             return renderChart($this, $entries, $settings, $options);
         },
     ],
+
+
+    /**
+     * Field methods
+     */
     'fieldMethods' => [
         /**
          * Creates chart
