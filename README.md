@@ -1,4 +1,5 @@
 # kirby3-charts
+[![Build](https://ci.codeberg.org/api/badges/Fundevogel/kirby3-charts/status.svg)](https://codeberg.org/Fundevogel/kirby3-charts/issues)
 
 A Kirby v3 plugin for creating SVG charts - batteries included.
 
@@ -108,12 +109,7 @@ $chart = $page->toChart($data, ['type' => 'DonutGraph'], [
 
 Adding more items to the example `$data` from before and using above code, the generated chart looks like this:
 
-![Chart](./example.svg)
-
-
-## Roadmap
-
-- [ ] Add tests
+![Chart](example.svg)
 
 
 ## Credits

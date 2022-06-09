@@ -6,6 +6,11 @@
     "version": "1.0.0",
     "keywords": ["kirby3", "svg", "charts"],
     "homepage": "https://codeberg.org/fundevogel/kirby3-charts",
+    "scripts": {
+        "cs-dry": "php-cs-fixer fix --dry-run --diff",
+        "cs-fix": "php-cs-fixer fix",
+        "test": "phpunit --bootstrap ./tests/fixtures/bootstrap.php"
+    },
     "authors": [
         {
             "name": "Kinder- und Jugendbuchhandlung Fundevogel",
@@ -27,20 +32,25 @@
         "issues": "https://codeberg.org/fundevogel/kirby3-charts/issues"
     },
     "require": {
-        "getkirby/composer-installer": "^1.1",
+        "php": "^7.4|^8.0",
+	    "getkirby/composer-installer": "^1.1",
         "goat1000/svggraph": "^3.13",
         "kschu91/largest-remainder-method": "^1.0"
     },
     "require-dev": {
+        "getkirby/cms": "^3.5",
         "friendsofphp/php-cs-fixer": "^2.14",
-        "phpunit/phpunit": "^8.1"
+        "phpunit/phpunit": "^8.5|^9.0"
     },
     "autoload-dev": {
         "psr-4": {
-            "Fundevogel\\Tests\\": "tests/"
+            "Fundevogel\\ChartsPlugin\\Tests\\": "tests/"
         }
     },
     "config": {
         "optimize-autoloader": true
+    },
+    "extra": {
+        "kirby-cms-path": false
     }
 }
