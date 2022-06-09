@@ -1,6 +1,6 @@
 <?php
 /**
- * Copyright (C) 2019-2020 Graham Breach
+ * Copyright (C) 2019-2022 Graham Breach
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU Lesser General Public License as published by
@@ -70,6 +70,7 @@ trait StackedGroupedBarTrait {
           }
 
           $stack_last = count($stack) - 1;
+          $top_dataset = 0;
           foreach($stack as $b => $stack_bar) {
             list($j, $start) = $stack_bar;
             $item = $itemlist[$j];
@@ -90,14 +91,6 @@ trait StackedGroupedBarTrait {
         $this->setBarLegendEntry($j, $bnum, $item);
 
     return $bars;
-  }
-
-  /**
-   * Sets whether a bar is visible or not
-   */
-  protected function setBarVisibility($dataset, DataItem $item, $top)
-  {
-    $this->bar_visibility[$dataset][$item->key] = ($item->value != 0);
   }
 
   /**

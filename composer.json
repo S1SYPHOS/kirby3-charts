@@ -33,9 +33,9 @@
     },
     "require": {
         "php": "^7.4|^8.0",
-	    "getkirby/composer-installer": "^1.1",
-        "goat1000/svggraph": "^3.13",
-        "kschu91/largest-remainder-method": "^1.0"
+	    "getkirby/composer-installer": "^1.2.0",
+        "goat1000/svggraph": "^3.14.0",
+        "kschu91/largest-remainder-method": "^1.1.0"
     },
     "require-dev": {
         "getkirby/cms": "^3.5",

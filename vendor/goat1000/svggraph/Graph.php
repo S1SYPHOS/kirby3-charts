@@ -1,6 +1,6 @@
 <?php
 /**
- * Copyright (C) 2019-2021 Graham Breach
+ * Copyright (C) 2019-2022 Graham Breach
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU Lesser General Public License as published by
@@ -298,6 +298,10 @@ abstract class Graph {
     $canvas_id = $this->newID();
     $this->initLegend();
     $this->setup();
+    if(!is_numeric($this->width))
+      $this->width = 640;
+    if(!is_numeric($this->height))
+      $this->height = 480;
 
     $contents = $this->canvas($canvas_id);
     $contents .= $this->drawTitle();
@@ -824,6 +828,8 @@ abstract class Graph {
    */
   protected function errorText($error)
   {
+    if(!is_numeric($this->height))
+      $this->height = 100;
     $text = ['x' => 3, 'y' => $this->height - 3];
     $style = [
       'font-family' => 'Courier New',
@@ -895,6 +901,8 @@ abstract class Graph {
   public function getLinkURL($item, $key, $row = 0)
   {
     $link = ($item === null ? null : $item->link);
+    if(is_numeric($key))
+      $key = (int)round($key);
     if($link === null && is_array($this->links[$row]) &&
       isset($this->links[$row][$key])) {
       $link = $this->links[$row][$key];
@@ -934,9 +942,9 @@ abstract class Graph {
   /**
    * Sets up the colour class
    */
-  protected function colourSetup($count, $datasets = null)
+  protected function colourSetup($count, $datasets = null, $reverse = false)
   {
-    $this->colours->setup($count, $datasets);
+    $this->colours->setup($count, $datasets, $reverse);
   }
 
   /**
